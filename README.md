@@ -26,6 +26,23 @@ npm start     # production
 | PUT    | `/products/:id`   | Replace a product        |
 | PATCH  | `/products/:id`   | Partially update product |
 | DELETE | `/products/:id`   | Delete a product         |
+| POST   | `/transpile`      | Convert Python source to JavaScript |
+
+### Python-to-JavaScript conversion
+
+The `/transpile` endpoint uses [`py2js-converter`](https://www.npmjs.com/package/py2js-converter). Send the Python source in JSON:
+
+```bash
+curl -X POST http://localhost:3000/transpile \
+  -H 'Content-Type: application/json' \
+  -d '{"source":"print(\"Hello from Python\")"}'
+```
+
+The response contains the generated JavaScript:
+
+```json
+{"javascript":"console.log(\"Hello from Python\");\n"}
+```
 
 ## Architecture
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const productRoutes = require('./src/routes/productRoutes');
+const transpileRoutes = require('./src/routes/transpileRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,6 +12,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/products', productRoutes);
+app.use('/transpile', transpileRoutes);
 
 app.use((error, request, response, next) => {
     console.error(error.message);
